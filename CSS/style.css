@@ -1,3 +1,37 @@
 body {
   background-color: rgb(240, 240, 232);
 }
+
+.carousel {
+  position: relative;
+  width: 70%;
+  height: 500px;
+  margin: auto;
+
+  border: 2px solid lightgray;
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+.container-img {
+  padding: 0;
+}
+.box-img {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+}
+
+.back {
+  border: 3px solid red;
+  position: absolute;
+  top: 90%;
+  left: 90%;
+}
+.next {
+  border: 3px solid red;
+  position: absolute;
+  top: 5%;
+  left: 90%;
+}
