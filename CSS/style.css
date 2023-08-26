@@ -4,7 +4,7 @@ body {
 
 .carousel {
   position: relative;
-  width: 70%;
+  width: 80%;
   height: 500px;
   margin: auto;
 
@@ -16,11 +16,9 @@ body {
 #container-img {
   padding: 0;
 }
-.box-img {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  position: absolute;
+
+img {
+  width: 100%;
 }
 
 #back {
@@ -34,4 +32,11 @@ body {
   position: absolute;
   top: 5%;
   left: 90%;
+}
+
+.active {
+  display: flex !important;
+  align-items: center;
+  position: absolute;
+  height: 100%;
 }

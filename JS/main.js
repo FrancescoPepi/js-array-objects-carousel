@@ -27,27 +27,69 @@ const images = [
   },
 ];
 let select = 0;
+// let newArrayImages = 0;
+
 // RECUPERARE DOM
 const next = document.getElementById("next");
 const back = document.getElementById("back");
-const container = document.getElementById("container-img");
+const containerImg = document.getElementById("container-img");
 
-const generateImgBox = images.map((image, index) => {
-  const imagesCarousel = {
-    image: image.image,
-    title: image.title,
-    text: image.text,
-    active: index == select ? "active" : "",
-  };
-  creationImgBox(image.image);
-  return imagesCarousel;
-});
-console.log(generateImgBox);
+printImg();
 
+function printImg() {
+  const newArrayImages = images.map((image, index) => {
+    imagesCarousel = {
+      image: image.image,
+      title: image.title,
+      text: image.text,
+      active: index == select ? "active" : "",
+    };
+    creationImgBox(imagesCarousel);
+    return imagesCarousel;
+  });
+  // console.log(image.active);
+  console.log(newArrayImages[select]);
+  console.log(newArrayImages);
+}
+
+// CEREAZIONE DEL DOM  DINAMICO
 function creationImgBox(image) {
-  container.innerHTML += `
-  <div class="box-img">
-            <img src="./${image}" alt="" />
-          </div>
+  containerImg.innerHTML += `
+  <div class="d-none ${image.active}">
+            <div>
+            <img src="./${image.image}" alt="" />
+            </div>
+            <h1>${image.title}</h1>
+            <p>${image.text}</p>
+            </div>
+            
   `;
+}
+
+next.addEventListener("click", function () {
+  nextBackButton(select++);
+});
+
+back.addEventListener("click", function () {
+  nextBackButton(select--);
+});
+
+function nextBackButton(incrementoDecremento) {
+  // # RECUPERO L'ARRAY DI TUTTE LE SLIDES
+  const allSlides = document.querySelectorAll(".d-none");
+
+  // # RECUPERO LA SLIDE ATTIVA E RIMUOVO LA CLASSE ACTIVE
+  const activeSlide = allSlides[incrementoDecremento];
+  activeSlide.classList.toggle("active");
+
+  incrementoDecremento;
+  console.log(incrementoDecremento);
+
+  // # SE ABBIAMO SUPERATO IL RANGE DELL'ARRAYANDIAMO ALLA SLIDE OPPOSTA
+  if (select >= allSlides.length) select = 0;
+  if (select < 0) select = allSlides.length - 1;
+
+  // # RECUPERO LA NUOVA SLIDE ATTIVA E AGGIUNGO LA CLASSE ACTIVE
+  const newActiveSlide = allSlides[select];
+  newActiveSlide.classList.toggle("active");
 }
