@@ -33,8 +33,10 @@ let slideActive = 0;
 const next = document.getElementById("next");
 const back = document.getElementById("back");
 const containerImg = document.getElementById("container-img");
+const containerThumb = document.getElementById("container-thumb");
 
 printImg();
+printthumb();
 
 function printImg() {
   images.forEach((image, index) => {
@@ -42,7 +44,7 @@ function printImg() {
     slide.classList.add("d-none");
     slide.innerHTML = ` 
     <img src="${image.image}" alt="" />
-    <div>
+    <div class="text">
     <h1>${image.title}</h1>
     <p>${image.text}</p>
     </div>`;
@@ -54,33 +56,22 @@ function printImg() {
     containerImg.append(slide);
     console.log(image, slide);
   });
+}
+function printthumb() {
+  images.forEach((image, index) => {
+    const slide = document.createElement("div");
+    // slide.classList.add("d-none");
+    slide.innerHTML = ` 
+    <img src="${image.image}" alt="" />`;
 
-  //   const newArrayImages = images.map((image, index) => {
-  //     imagesCarousel = {
-  //       image: image.image,
-  //       title: image.title,
-  //       text: image.text,
-  //       active: index == slideActive ? "active" : "",
-  //     };
-  //     creationImgBox(imagesCarousel);
-  //     return imagesCarousel;
-  //   });
-  //   console.log(newArrayImages[slideActive]);
-  //   console.log(newArrayImages);
-  // }
+    slide.style.height = `calc(100% /${images.length})`;
 
-  // // CEREAZIONE DEL DOM  DINAMICO
-  // function creationImgBox(image) {
-  //   containerImg.innerHTML += `
-  //   <div class="d-none ${image.active}">
-  //   <img src="${image.image}" alt="" />
-  //   <div>
-  //   <h1>${image.title}</h1>
-  //   <p>${image.text}</p>
-  //   </div>
-  //             </div>
+    image.thumb = slide;
+    // if (image.index == slideActive) slide.classList.add("active");
 
-  //   `;
+    containerThumb.append(slide);
+    console.log(image, slide);
+  });
 }
 
 next.addEventListener("click", function () {
