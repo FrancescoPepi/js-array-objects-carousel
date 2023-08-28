@@ -9,7 +9,7 @@ body {
   margin: auto;
 
   border: 2px solid lightgray;
-  border-radius: 20px;
+  border-radius: 20px 0px 0px 20px;
 
   overflow: hidden;
 }
@@ -24,13 +24,11 @@ img {
 }
 
 #back {
-  border: 3px solid red;
   position: absolute;
   top: 90%;
   left: 90%;
 }
 #next {
-  border: 3px solid red;
   position: absolute;
   top: 5%;
   left: 90%;
@@ -41,4 +39,8 @@ img {
   align-items: center;
   position: absolute;
   height: 100%;
+}
+#next:hover,
+#back:hover {
+  transform: scale(1.5);
 }
