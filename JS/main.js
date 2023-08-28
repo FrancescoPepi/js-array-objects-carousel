@@ -56,11 +56,11 @@ function printImg() {
 function creationImgBox(image) {
   containerImg.innerHTML += `
   <div class="d-none ${image.active}">
-            <div>
-            <img src="./${image.image}" alt="" />
-            </div>
-            <h1>${image.title}</h1>
-            <p>${image.text}</p>
+  <img src="${image.image}" alt="" />
+  <div>
+  <h1>${image.title}</h1>
+  <p>${image.text}</p>
+  </div>
             </div>
             
   `;
